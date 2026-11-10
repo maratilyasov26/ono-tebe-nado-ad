@@ -344,8 +344,6 @@
 
 /* #endregion Конец блока about */
 
-/* #region Начало блока footer  */
-
 .footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -404,4 +402,3 @@
   list-style: none;
 }
 
-/* #endregion Конец блока footer */
