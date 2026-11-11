@@ -3,27 +3,21 @@
   margin: auto;
 }
 
-/* #region Начало вспомогательных классов  */
+/* #region Вспомогательные классы */
 
 .no-wrap {
   white-space: nowrap;
-}
-
-.letter-spacing-extended {
-  letter-spacing: 60px;
 }
 
 .no-letter-spacing {
   letter-spacing: normal;
 }
 
-.aligned-text,
-.aligned-text_center,
-.aligned-text_right {
+.aligned-text {
   display: block;
 }
 
-.aligned-text {
+.aligned-text_left {
   text-align: left;
 }
 
@@ -35,21 +29,21 @@
   text-align: right;
 }
 
-/* #endregion Конец вспомогательных классов  */
+/* #endregion */
 
-/* #region Начало вспомогательных компонентов  */
+/* #region Вспомогательные компоненты */
 
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   z-index: -1;
-  width: 100%;
-  height: 100%;
   background: rgba(0, 0, 0, 0.6);
 }
 
 .address {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   max-width: 238px;
   font-weight: 400;
   font-size: 18px;
@@ -57,11 +51,20 @@
   line-height: 24.3px;
 }
 
+.address__link {
+  text-underline-offset: 5px;
+  transition: text-underline-offset 0.3s ease;
+}
+
+.address__link:hover {
+  text-underline-offset: 7px;
+}
+
 .bet-button {
   border: 1px solid #fff;
   padding: 12px 32px;
   color: inherit;
-  font-family: "Raleway", sans-serif;
+  font-weight: 400;
   font-size: 22px;
   line-height: normal;
   text-align: center;
@@ -75,21 +78,21 @@
   transform: scale(1.03);
 }
 
-/* #endregion Конец вспомогательных компонентов  */
+/* #endregion */
 
-/* #region Начало блока header  */
+/* #region header */
 
 .header {
   display: grid;
   grid-template-columns: 1fr min-content 1fr;
   align-items: center;
-  padding: 92px 49px 96px 51px;
+  padding: 92px 50px 96px;
 }
 
 .header__links-list {
   display: flex;
   align-items: center;
-  gap: 10px 33px;
+  gap: 33px;
   list-style: circle;
 }
 
@@ -116,42 +119,30 @@
 
 .header__logo {
   display: block;
-  justify-self: center;
-  width: 148px;
-  height: 105px;
-  transition: transform 0.3s ease;
-}
-
-.header__logo:hover {
-  transform: scale(1.03);
+  width: 136.5px;
 }
 
 .header__logo-image {
-  max-height: 100%;
-  object-fit: contain;
+  display: block;
+  height: auto;
 }
 
 .header__address {
   justify-self: end;
+  /* в макете адрес переносится на «263-»: сужаем область текста,
+     не сдвигая левый край блока */
+  padding-right: 10px;
 }
 
-.header__address-link {
-  text-underline-offset: 5px;
-  transition: text-underline-offset 0.3s ease;
-}
+/* #endregion */
 
-.header__address-link:hover {
-  text-underline-offset: 7px;
-}
-
-/* #endregion Конец блока header */
-
-/* #region Начало блока cover  */
+/* #region cover */
 
 .cover {
   position: relative;
   z-index: 1;
-  padding: 173px 50px 50px 50px;
+  min-height: 757px;
+  padding: 173px 50px 50px;
   color: #fff;
   background-color: #a7a7a7;
   background-image: url("../images/cover.jpg");
@@ -163,8 +154,8 @@
 .cover__title {
   display: flex;
   flex-direction: column;
-  row-gap: 24px;
-  margin-bottom: 135px;
+  row-gap: 35px;
+  margin-bottom: 112px;
   font-weight: 700;
   font-size: 100px;
   line-height: 100%;
@@ -174,12 +165,11 @@
 
 .cover__description {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 }
 
 .cover__description-text {
-  margin-right: 80px;
   font-weight: 400;
   font-size: 22px;
   line-height: 28px;
@@ -188,13 +178,12 @@
   word-spacing: 18px;
 }
 
-/* #endregion Конец блока cover */
+/* #endregion */
 
-
-/* #region Начало блока lots  */
+/* #region lots */
 
 .lots {
-  padding: 179px 50px 50px 50px;
+  padding: 180px 24px 0;
 }
 
 .lots__heading {
@@ -210,14 +199,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
-  width: 100%;
   margin-bottom: 30px;
   list-style: none;
 }
 
 .lots__card-list-item {
-  flex: 1 1 430px;
-  min-height: 450px;
+  width: 334px;
+  min-height: 596px;
 }
 
 .lots__look-more-link {
@@ -233,13 +221,12 @@
   text-underline-offset: 7px;
 }
 
-/* #endregion Конец блока lots */
+/* #endregion */
 
-/* #region Начало компонента card */
+/* #region card */
 
 .card-link {
   display: block;
-  width: 100%;
   height: 100%;
   text-decoration: none;
   transition: transform 0.3s ease;
@@ -254,15 +241,9 @@
   z-index: 1;
   display: flex;
   flex-direction: column;
-  width: 100%;
   height: 100%;
-  padding: 50px 40px;
+  padding: 48px 40px;
   color: #fff;
-}
-
-.card_type_film,
-.card_type_book,
-.card_type_picture {
   background-color: #a7a7a7;
   background-repeat: no-repeat;
   background-position: center;
@@ -296,35 +277,34 @@
   line-height: 120%;
 }
 
-/* #endregion Конец компонента card */
+/* #endregion */
 
-/* #region Начало блока about  */
+/* #region about */
 
 .about {
   display: grid;
-  grid-template-columns: min-content 1fr;
-  column-gap: 28px;
-  padding: 130px 50px 90px 50px;
+  grid-template-columns: 334px 1fr;
+  column-gap: 25px;
+  padding: 154px 24px 90px;
 }
 
 .about__logo {
   display: flex;
   width: 240px;
   height: 240px;
-  margin: 0 94px;
+  margin: 0 auto;
   border-radius: 50%;
   background: #000;
 }
 
 .about__logo-image {
   width: 148px;
-  height: 114px;
+  height: auto;
   margin: auto;
-  object-fit: contain;
 }
 
 .about__title {
-  margin-top: 102px;
+  margin-top: 100px;
   margin-bottom: 100px;
   font-weight: 700;
   font-size: 40px;
@@ -333,16 +313,17 @@
 }
 
 .about__text {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
   font-weight: 400;
   font-size: 20px;
-  line-height: normal;
+  line-height: 120%;
 }
 
-.about__text:not(:last-of-type) {
-  margin-bottom: 25px;
-}
+/* #endregion */
 
-/* #endregion Конец блока about */
+/* #region footer */
 
 .footer {
   display: grid;
@@ -351,18 +332,9 @@
   padding: 90px 50px;
 }
 
-.footer__address-link {
-  text-underline-offset: 5px;
-  transition: text-underline-offset 0.3s ease;
-}
-
-.footer__address-link:hover {
-  text-underline-offset: 7px;
-}
-
 .footer__menu-list {
-  text-align: center;
   list-style: none;
+  text-align: center;
 }
 
 .footer__menu-link {
@@ -381,6 +353,16 @@
   text-decoration: none;
 }
 
+.footer__social-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-self: end;
+  align-items: center;
+  gap: 20px 48px;
+  max-width: 240px;
+  list-style: none;
+}
+
 .footer__social-link {
   display: block;
   width: 48px;
@@ -392,13 +374,4 @@
   transform: translateY(-3px);
 }
 
-.footer__social-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-self: end;
-  align-items: center;
-  gap: 20px 48px;
-  max-width: 240px;
-  list-style: none;
-}
-
+/* #endregion */
